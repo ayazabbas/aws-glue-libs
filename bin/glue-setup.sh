@@ -16,7 +16,7 @@ GLUE_PY_FILES="$ROOT_DIR/PyGlue.zip"
 export PYTHONPATH="$GLUE_PY_FILES:$PYTHONPATH"
 
 # Run mvn copy-dependencies target to get the Glue dependencies locally
-mvn -f $ROOT_DIR/pom.xml -DoutputDirectory=$ROOT_DIR/jarsv1 dependency:copy-dependencies
+# mvn -f $ROOT_DIR/pom.xml -DoutputDirectory=$ROOT_DIR/jarsv1 dependency:copy-dependencies
 
 export SPARK_CONF_DIR=${ROOT_DIR}/conf
 mkdir $SPARK_CONF_DIR
