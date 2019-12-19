@@ -24,6 +24,8 @@ rm $SPARK_CONF_DIR/spark-defaults.conf
 # Generate spark-defaults.conf
 echo "spark.driver.extraClassPath $GLUE_JARS_DIR/*" >> $SPARK_CONF_DIR/spark-defaults.conf
 echo "spark.executor.extraClassPath $GLUE_JARS_DIR/*" >> $SPARK_CONF_DIR/spark-defaults.conf
+echo "log4j.rootCategory=ERROR, console" >> $SPARK_CONF_DIR/log4j.properties
+echo "log4j.appender.console=org.apache.log4j.ConsoleAppender" >> $SPARK_CONF_DIR/log4j.properties
 
 # Restore present working directory
 cd -
