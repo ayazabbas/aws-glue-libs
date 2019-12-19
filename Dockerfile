@@ -1,11 +1,18 @@
 From xqdocker/ubuntu-openjdk:8
 
+ARG AWS_ACCESS_KEY_ID
+ARG AWS_SECRET_ACCESS_KEY
+ARG AWS_DEFAULT_REGION
+
 RUN apt-get update && \
     apt-get install -y git python3-pip wget zip && \
     if [ ! -e /usr/bin/python ]; then ln -sf python3 /usr/bin/python ; fi && \
-    pip3 install --no-cache --upgrade pip setuptools wheel && \
+    pip3 install --no-cache --upgrade pip setuptools wheel boto3 && \
     if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi
 
+ENV AWS_ACCESS_KEY_ID $AWS_ACCESS_KEY_ID
+ENV AWS_SECRET_ACCESS_KEY $AWS_SECRET_ACCESS_KEY
+ENV AWS_DEFAULT_REGION $AWS_DEFAULT_REGION
 ENV MAVEN_VERSION 3.6.3
 ENV MAVEN_HOME /usr/lib/mvn
 ENV SPARK_HOME /usr/lib/spark
